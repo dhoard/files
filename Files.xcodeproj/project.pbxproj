@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F0000000000000000000002B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000013 /* AppDelegate.swift */; };
+		F0000000000000000000002C /* ClipboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000014 /* ClipboardService.swift */; };
+		F0000000000000000000002D /* DirectoryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000015 /* DirectoryMonitor.swift */; };
+		F0000000000000000000002E /* DirectoryTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000016 /* DirectoryTreeController.swift */; };
+		F0000000000000000000002F /* DragDropCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000017 /* DragDropCoordinator.swift */; };
+		F00000000000000000000030 /* ExplorerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000018 /* ExplorerWindowController.swift */; };
+		F00000000000000000000031 /* FileListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000019 /* FileListController.swift */; };
+		F00000000000000000000032 /* FileOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001A /* FileOperations.swift */; };
+		F00000000000000000000033 /* FileSystemItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001B /* FileSystemItem.swift */; };
+		F00000000000000000000034 /* InfoSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001C /* InfoSheetController.swift */; };
+		F00000000000000000000035 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001D /* NavigationController.swift */; };
+		F00000000000000000000036 /* OperationProgressPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001E /* OperationProgressPanel.swift */; };
+		F00000000000000000000037 /* PathBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001F /* PathBarController.swift */; };
+		F00000000000000000000038 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000020 /* Preferences.swift */; };
+		F00000000000000000000039 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000021 /* main.swift */; };
+		F00000000000000000000043 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000013 /* AppDelegate.swift */; };
+		F00000000000000000000044 /* ClipboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000014 /* ClipboardService.swift */; };
+		F00000000000000000000045 /* DirectoryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000015 /* DirectoryMonitor.swift */; };
+		F00000000000000000000046 /* DirectoryTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000016 /* DirectoryTreeController.swift */; };
+		F00000000000000000000047 /* DragDropCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000017 /* DragDropCoordinator.swift */; };
+		F00000000000000000000048 /* ExplorerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000018 /* ExplorerWindowController.swift */; };
+		F00000000000000000000049 /* FileListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000019 /* FileListController.swift */; };
+		F0000000000000000000004A /* FileOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001A /* FileOperations.swift */; };
+		F0000000000000000000004B /* FileSystemItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001B /* FileSystemItem.swift */; };
+		F0000000000000000000004C /* InfoSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001C /* InfoSheetController.swift */; };
+		F0000000000000000000004D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001D /* NavigationController.swift */; };
+		F0000000000000000000004E /* OperationProgressPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001E /* OperationProgressPanel.swift */; };
+		F0000000000000000000004F /* PathBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000001F /* PathBarController.swift */; };
+		F00000000000000000000050 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000020 /* Preferences.swift */; };
+		F0000000000000000000003A /* ClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000022 /* ClipboardTests.swift */; };
+		F0000000000000000000003B /* DirectoryMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000023 /* DirectoryMonitorTests.swift */; };
+		F0000000000000000000003C /* DragDropPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000024 /* DragDropPolicyTests.swift */; };
+		F0000000000000000000003D /* ExplorerWindowSmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000025 /* ExplorerWindowSmokeTests.swift */; };
+		F0000000000000000000003E /* MenuWiringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000026 /* MenuWiringTests.swift */; };
+		F0000000000000000000003F /* PathBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000027 /* PathBarTests.swift */; };
+		F00000000000000000000040 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000028 /* PreferencesTests.swift */; };
+		F00000000000000000000041 /* FileOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000029 /* FileOperationsTests.swift */; };
+		F00000000000000000000042 /* NavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000002A /* NavigationTests.swift */; };
+		A10000000000000000000002 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000001 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F00000000000000000000008 /* Files.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Files.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F00000000000000000000009 /* FilesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F00000000000000000000013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F00000000000000000000014 /* ClipboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardService.swift; sourceTree = "<group>"; };
+		F00000000000000000000015 /* DirectoryMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryMonitor.swift; sourceTree = "<group>"; };
+		F00000000000000000000016 /* DirectoryTreeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryTreeController.swift; sourceTree = "<group>"; };
+		F00000000000000000000017 /* DragDropCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropCoordinator.swift; sourceTree = "<group>"; };
+		F00000000000000000000018 /* ExplorerWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerWindowController.swift; sourceTree = "<group>"; };
+		F00000000000000000000019 /* FileListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListController.swift; sourceTree = "<group>"; };
+		F0000000000000000000001A /* FileOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOperations.swift; sourceTree = "<group>"; };
+		F0000000000000000000001B /* FileSystemItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemItem.swift; sourceTree = "<group>"; };
+		F0000000000000000000001C /* InfoSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSheetController.swift; sourceTree = "<group>"; };
+		F0000000000000000000001D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		F0000000000000000000001E /* OperationProgressPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationProgressPanel.swift; sourceTree = "<group>"; };
+		F0000000000000000000001F /* PathBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathBarController.swift; sourceTree = "<group>"; };
+		F00000000000000000000020 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		F00000000000000000000021 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		F00000000000000000000022 /* ClipboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardTests.swift; sourceTree = "<group>"; };
+		F00000000000000000000023 /* DirectoryMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryMonitorTests.swift; sourceTree = "<group>"; };
+		F00000000000000000000024 /* DragDropPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropPolicyTests.swift; sourceTree = "<group>"; };
+		F00000000000000000000025 /* ExplorerWindowSmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerWindowSmokeTests.swift; sourceTree = "<group>"; };
+		F00000000000000000000026 /* MenuWiringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWiringTests.swift; sourceTree = "<group>"; };
+		F00000000000000000000027 /* PathBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathBarTests.swift; sourceTree = "<group>"; };
+		F00000000000000000000028 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
+		F00000000000000000000029 /* FileOperationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOperationsTests.swift; sourceTree = "<group>"; };
+		F0000000000000000000002A /* NavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTests.swift; sourceTree = "<group>"; };
+		A10000000000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0000000000000000000000B = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0000000000000000000000E = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F00000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				F00000000000000000000003 /* Files */,
+				F00000000000000000000004 /* FilesTests */,
+				F00000000000000000000005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F00000000000000000000003 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				F00000000000000000000013 /* AppDelegate.swift */,
+				F00000000000000000000014 /* ClipboardService.swift */,
+				F00000000000000000000015 /* DirectoryMonitor.swift */,
+				F00000000000000000000016 /* DirectoryTreeController.swift */,
+				F00000000000000000000017 /* DragDropCoordinator.swift */,
+				F00000000000000000000018 /* ExplorerWindowController.swift */,
+				F00000000000000000000019 /* FileListController.swift */,
+				F0000000000000000000001A /* FileOperations.swift */,
+				F0000000000000000000001B /* FileSystemItem.swift */,
+				F0000000000000000000001C /* InfoSheetController.swift */,
+				F0000000000000000000001D /* NavigationController.swift */,
+				F0000000000000000000001E /* OperationProgressPanel.swift */,
+				F0000000000000000000001F /* PathBarController.swift */,
+				F00000000000000000000020 /* Preferences.swift */,
+				F00000000000000000000021 /* main.swift */,
+				A10000000000000000000001 /* Assets.xcassets */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		F00000000000000000000004 /* FilesTests */ = {
+			isa = PBXGroup;
+			children = (
+				F00000000000000000000022 /* ClipboardTests.swift */,
+				F00000000000000000000023 /* DirectoryMonitorTests.swift */,
+				F00000000000000000000024 /* DragDropPolicyTests.swift */,
+				F00000000000000000000025 /* ExplorerWindowSmokeTests.swift */,
+				F00000000000000000000026 /* MenuWiringTests.swift */,
+				F00000000000000000000027 /* PathBarTests.swift */,
+				F00000000000000000000028 /* PreferencesTests.swift */,
+				F00000000000000000000029 /* FileOperationsTests.swift */,
+				F0000000000000000000002A /* NavigationTests.swift */,
+			);
+			path = FilesTests;
+			sourceTree = "<group>";
+		};
+		F00000000000000000000005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F00000000000000000000008 /* Files.app */,
+				F00000000000000000000009 /* FilesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F00000000000000000000006 /* Files */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F00000000000000000000011 /* Build configuration list for PBXNativeTarget "Files" */;
+			buildPhases = (
+				F0000000000000000000000A /* Sources */,
+				F0000000000000000000000B /* Frameworks */,
+				F0000000000000000000000C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Files;
+			productName = Files;
+			productReference = F00000000000000000000008 /* Files.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F00000000000000000000007 /* FilesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F00000000000000000000012 /* Build configuration list for PBXNativeTarget "FilesTests" */;
+			buildPhases = (
+				F0000000000000000000000D /* Sources */,
+				F0000000000000000000000E /* Frameworks */,
+				F0000000000000000000000F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FilesTests;
+			productName = FilesTests;
+			productReference = F00000000000000000000009 /* FilesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F00000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					F00000000000000000000006 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					F00000000000000000000007 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = F00000000000000000000010 /* Build configuration list for PBXProject "Files" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F00000000000000000000002;
+			productRefGroup = F00000000000000000000005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F00000000000000000000006 /* Files */,
+				F00000000000000000000007 /* FilesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0000000000000000000000C = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000002 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0000000000000000000000F = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0000000000000000000000A = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0000000000000000000002B /* AppDelegate.swift in Sources */,
+				F0000000000000000000002C /* ClipboardService.swift in Sources */,
+				F0000000000000000000002D /* DirectoryMonitor.swift in Sources */,
+				F0000000000000000000002E /* DirectoryTreeController.swift in Sources */,
+				F0000000000000000000002F /* DragDropCoordinator.swift in Sources */,
+				F00000000000000000000030 /* ExplorerWindowController.swift in Sources */,
+				F00000000000000000000031 /* FileListController.swift in Sources */,
+				F00000000000000000000032 /* FileOperations.swift in Sources */,
+				F00000000000000000000033 /* FileSystemItem.swift in Sources */,
+				F00000000000000000000034 /* InfoSheetController.swift in Sources */,
+				F00000000000000000000035 /* NavigationController.swift in Sources */,
+				F00000000000000000000036 /* OperationProgressPanel.swift in Sources */,
+				F00000000000000000000037 /* PathBarController.swift in Sources */,
+				F00000000000000000000038 /* Preferences.swift in Sources */,
+				F00000000000000000000039 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0000000000000000000000D = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F00000000000000000000043 /* AppDelegate.swift in Sources */,
+				F00000000000000000000044 /* ClipboardService.swift in Sources */,
+				F00000000000000000000045 /* DirectoryMonitor.swift in Sources */,
+				F00000000000000000000046 /* DirectoryTreeController.swift in Sources */,
+				F00000000000000000000047 /* DragDropCoordinator.swift in Sources */,
+				F00000000000000000000048 /* ExplorerWindowController.swift in Sources */,
+				F00000000000000000000049 /* FileListController.swift in Sources */,
+				F0000000000000000000004A /* FileOperations.swift in Sources */,
+				F0000000000000000000004B /* FileSystemItem.swift in Sources */,
+				F0000000000000000000004C /* InfoSheetController.swift in Sources */,
+				F0000000000000000000004D /* NavigationController.swift in Sources */,
+				F0000000000000000000004E /* OperationProgressPanel.swift in Sources */,
+				F0000000000000000000004F /* PathBarController.swift in Sources */,
+				F00000000000000000000050 /* Preferences.swift in Sources */,
+				F0000000000000000000003A /* ClipboardTests.swift in Sources */,
+				F0000000000000000000003B /* DirectoryMonitorTests.swift in Sources */,
+				F0000000000000000000003C /* DragDropPolicyTests.swift in Sources */,
+				F0000000000000000000003D /* ExplorerWindowSmokeTests.swift in Sources */,
+				F0000000000000000000003E /* MenuWiringTests.swift in Sources */,
+				F0000000000000000000003F /* PathBarTests.swift in Sources */,
+				F00000000000000000000040 /* PreferencesTests.swift in Sources */,
+				F00000000000000000000041 /* FileOperationsTests.swift in Sources */,
+				F00000000000000000000042 /* NavigationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F00000000000000000000051 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+								ALWAYS_SEARCH_USER_PATHS = NO;
+								CLANG_ANALYZER_NONNULL = YES;
+								CLANG_ENABLE_MODULES = YES;
+								CLANG_ENABLE_OBJC_ARC = YES;
+								CLANG_WARN_BOOL_CONVERSION = YES;
+								CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+								CLANG_WARN_EMPTY_BODY = YES;
+								CLANG_WARN_UNREACHABLE_CODE = YES;
+								CODE_SIGNING_ALLOWED = NO;
+								CODE_SIGNING_REQUIRED = NO;
+								COPY_PHASE_STRIP = NO;
+								ENABLE_STRICT_OBJC_MSGSEND = YES;
+								GCC_C_LANGUAGE_STANDARD = gnu17;
+								GCC_NO_COMMON_BLOCKS = YES;
+								MACOSX_DEPLOYMENT_TARGET = 14.0;
+								SDKROOT = macosx;
+								SWIFT_VERSION = 5.0;
+								ARCHS = arm64;
+								VALID_ARCHS = arm64;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+				    "DEBUG=1",
+				    "$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F00000000000000000000052 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+								ALWAYS_SEARCH_USER_PATHS = NO;
+								CLANG_ANALYZER_NONNULL = YES;
+								CLANG_ENABLE_MODULES = YES;
+								CLANG_ENABLE_OBJC_ARC = YES;
+								CLANG_WARN_BOOL_CONVERSION = YES;
+								CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+								CLANG_WARN_EMPTY_BODY = YES;
+								CLANG_WARN_UNREACHABLE_CODE = YES;
+								CODE_SIGNING_ALLOWED = NO;
+								CODE_SIGNING_REQUIRED = NO;
+								COPY_PHASE_STRIP = NO;
+								ENABLE_STRICT_OBJC_MSGSEND = YES;
+								GCC_C_LANGUAGE_STANDARD = gnu17;
+								GCC_NO_COMMON_BLOCKS = YES;
+								MACOSX_DEPLOYMENT_TARGET = 14.0;
+								SDKROOT = macosx;
+								SWIFT_VERSION = 5.0;
+								ARCHS = arm64;
+								VALID_ARCHS = arm64;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F00000000000000000000053 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Files;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+				    "$(inherited)",
+				    "@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.files.app;
+				PRODUCT_NAME = Files;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Debug;
+		};
+		F00000000000000000000054 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Files;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+				    "$(inherited)",
+				    "@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.files.app;
+				PRODUCT_NAME = Files;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Release;
+		};
+		F00000000000000000000055 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+				    "$(inherited)",
+				    "@executable_path/../Frameworks",
+				    "@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.files.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Debug;
+		};
+		F00000000000000000000056 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+				    "$(inherited)",
+				    "@executable_path/../Frameworks",
+				    "@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.files.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F00000000000000000000010 /* Build configuration list for PBXProject "Files" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F00000000000000000000051 /* Debug */,
+				F00000000000000000000052 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F00000000000000000000011 /* Build configuration list for PBXNativeTarget "Files" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F00000000000000000000053 /* Debug */,
+				F00000000000000000000054 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F00000000000000000000012 /* Build configuration list for PBXNativeTarget "FilesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F00000000000000000000055 /* Debug */,
+				F00000000000000000000056 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F00000000000000000000001 /* Project object */;
+}

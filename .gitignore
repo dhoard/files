@@ -1,0 +1,7 @@
+build/
+dist/*
+plans/
+!dist/.gitkeep
+.DS_Store
+xcuserdata/
+*.xcuserstate
