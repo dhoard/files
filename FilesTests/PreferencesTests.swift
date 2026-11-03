@@ -42,12 +42,14 @@ final class PreferencesTests: XCTestCase {
         XCTAssertEqual(reloaded.columnWidth(for: "size"), 321)
     }
 
-    func testSplitFractionIsClamped() {
+    func testSplitFractionIsClampedToASanityRange() {
+        // The usable range is bounded by the controller's minimum pane widths;
+        // this clamp only rejects corrupt values.
         let preferences = Preferences(defaults: defaults)
-        preferences.splitFraction = 0.95
-        XCTAssertEqual(try XCTUnwrap(preferences.splitFraction), 0.75, accuracy: 0.0001)
+        preferences.splitFraction = 0.99
+        XCTAssertEqual(try XCTUnwrap(preferences.splitFraction), 0.95, accuracy: 0.0001)
         preferences.splitFraction = 0.01
-        XCTAssertEqual(try XCTUnwrap(preferences.splitFraction), 0.15, accuracy: 0.0001)
+        XCTAssertEqual(try XCTUnwrap(preferences.splitFraction), 0.05, accuracy: 0.0001)
         preferences.splitFraction = 0.4
         XCTAssertEqual(try XCTUnwrap(preferences.splitFraction), 0.4, accuracy: 0.0001)
     }

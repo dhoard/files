@@ -5,6 +5,20 @@ import UniformTypeIdentifiers
 /// tree expansion and file-list state. Shared behavior (file operations,
 /// clipboard formats, preferences) lives in shared services.
 final class ExplorerWindowController: NSWindowController, NSWindowDelegate, NSMenuItemValidation, NSSplitViewDelegate {
+    /// Default share of the window width taken by the directory tree: a 1/3
+    /// left pane beside a 2/3 file listing. Only seeds the initial divider
+    /// position on the first launch; afterwards the user's width is restored.
+    static let defaultTreeWidthFraction: Double = 1.0 / 3.0
+
+    /// Narrowest the directory tree and the file listing may become. The
+    /// divider is held inside these bounds while dragging and while a stored
+    /// width is restored, so they are the only place pane limits are defined.
+    /// A fraction is persisted rather than a point width, and these limits
+    /// bound the range a stored fraction can actually reproduce; clamping in
+    /// `Preferences` narrower than this would move the divider on relaunch.
+    static let minimumTreeWidth: CGFloat = 160
+    static let minimumListWidth: CGFloat = 360
+
     private(set) var currentDirectory: URL
     private let preferences: Preferences
     private let treeController: DirectoryTreeController
@@ -19,6 +33,10 @@ final class ExplorerWindowController: NSWindowController, NSWindowDelegate, NSMe
     private var rootView: ExplorerRootView?
     private var volumeObservers: [NSObjectProtocol] = []
     private var hasAppliedInitialLayout = false
+    /// Fraction last put on screen or persisted. Used to tell a divider drag
+    /// (the fraction changes) from a window resize (both panes scale and the
+    /// fraction is unchanged).
+    private var lastSplitFraction: Double?
     private var isPerformingOperation = false
     private var applyToAllConflicts: ConflictResolution?
     private var progressPanel: OperationProgressPanel?
@@ -236,16 +254,23 @@ final class ExplorerWindowController: NSWindowController, NSWindowDelegate, NSMe
     }
 
     override func showWindow(_ sender: Any?) {
+        // The saved width is read before the window is ordered on screen: the
+        // split view's first automatic layout splits evenly and reports back
+        // through the delegate. Reading the preference afterwards would see
+        // that even split instead of the stored (or default) fraction.
+        let fraction = preferences.splitFraction ?? Self.defaultTreeWidthFraction
         super.showWindow(sender)
         guard !hasAppliedInitialLayout else { return }
-        hasAppliedInitialLayout = true
         window?.layoutIfNeeded()
         let width = splitView.bounds.width
         if width > 0 {
-            let fraction = preferences.splitFraction ?? 0.3
-            let position = max(180, min(CGFloat(width) * CGFloat(fraction), width - 360))
-            splitView.setPosition(position, ofDividerAt: 0)
+            splitView.setPosition(width * CGFloat(fraction), ofDividerAt: 0)
+            // The delegate constrains the divider, so measure what it applied
+            // rather than what was asked for. Seeding the baseline with it
+            // keeps the restore itself from being persisted as a user choice.
+            lastSplitFraction = Double(treeController.scrollView.frame.width / width)
         }
+        hasAppliedInitialLayout = true
         window?.makeFirstResponder(fileList.tableView)
     }
 
@@ -1058,22 +1083,30 @@ final class ExplorerWindowController: NSWindowController, NSWindowDelegate, NSMe
     // MARK: - NSSplitViewDelegate
 
     func splitView(_ splitView: NSSplitView, constrainMinCoordinate proposedMinimumPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
-        max(proposedMinimumPosition, 160)
+        max(proposedMinimumPosition, Self.minimumTreeWidth)
     }
 
     func splitView(_ splitView: NSSplitView, constrainMaxCoordinate proposedMaximumPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
-        min(proposedMaximumPosition, splitView.bounds.width - 360)
+        min(proposedMaximumPosition, splitView.bounds.width - Self.minimumListWidth)
     }
 
     func splitView(_ splitView: NSSplitView, shouldCollapseSubview subview: NSView, forDoubleClickOnDividerAt dividerIndex: Int) -> Bool {
         false
     }
 
+    /// Persists the divider only when the user actually moves it. The first
+    /// layout (an even split, corrected by `showWindow`) and window resizes
+    /// (both panes scale, so the fraction barely changes) must not be written:
+    /// the stored width is shared by every window and instance, and a launch or
+    /// resize writing a stale fraction would discard the most recent move.
     func splitViewDidResizeSubviews(_ notification: Notification) {
-        guard splitView.bounds.width > 0 else { return }
-        let fraction = treeController.scrollView.frame.width / splitView.bounds.width
-        guard fraction > 0.05 else { return }
-        preferences.splitFraction = Double(fraction)
+        guard hasAppliedInitialLayout else { return }
+        let width = splitView.bounds.width
+        guard width > 0 else { return }
+        let fraction = Double(treeController.scrollView.frame.width / width)
+        if let last = lastSplitFraction, abs(last - fraction) < 0.002 { return }
+        lastSplitFraction = fraction
+        preferences.splitFraction = fraction
     }
 
     // MARK: - NSWindowDelegate

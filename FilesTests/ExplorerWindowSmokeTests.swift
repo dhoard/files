@@ -218,6 +218,121 @@ extension ExplorerWindowSmokeTests {
         return (split, table, outline, pathField)
     }
 
+    func testDefaultSplitGivesTreeOneThirdOfTheWindow() throws {
+        let start = try makeFolder("Start", under: root)
+        let preferences = Preferences.shared
+        let savedFraction = preferences.splitFraction
+        preferences.splitFraction = nil
+        defer { preferences.splitFraction = savedFraction }
+
+        let controller = makeController(start: start)
+        let split = try XCTUnwrap(locate(in: controller).split)
+        let width = split.bounds.width
+        XCTAssertGreaterThan(width, 0)
+        let treeWidth = try XCTUnwrap(split.arrangedSubviews.first).frame.width
+        XCTAssertEqual(Double(treeWidth / width), 1.0 / 3.0, accuracy: 0.02,
+                       "The directory tree should default to a third of the window")
+        XCTAssertNil(preferences.splitFraction,
+                     "Seeding the default must not be stored as if it were a user choice")
+    }
+
+    func testDividerDragPersistsTheNewFraction() throws {
+        let start = try makeFolder("Start", under: root)
+        let preferences = Preferences.shared
+        let savedFraction = preferences.splitFraction
+        preferences.splitFraction = nil
+        defer { preferences.splitFraction = savedFraction }
+
+        let controller = makeController(start: start)
+        let split = try XCTUnwrap(locate(in: controller).split)
+        let width = split.bounds.width
+        XCTAssertGreaterThan(width, 0)
+
+        split.setPosition(520, ofDividerAt: 0)
+
+        let stored = try XCTUnwrap(preferences.splitFraction, "A divider drag must be persisted")
+        XCTAssertEqual(stored, Double(520 / width), accuracy: 0.002)
+    }
+
+    func testResizingOneWindowKeepsTheLastDividerPosition() throws {
+        let start = try makeFolder("Start", under: root)
+        let preferences = Preferences.shared
+        let savedFraction = preferences.splitFraction
+        let savedFrame = preferences.windowFrame
+        preferences.splitFraction = nil
+        defer {
+            preferences.splitFraction = savedFraction
+            preferences.windowFrame = savedFrame
+        }
+
+        let first = makeController(start: start)
+        _ = makeController(start: start, cascadeIndex: 1)
+        let firstSplit = try XCTUnwrap(locate(in: first).split)
+        firstSplit.setPosition(300, ofDividerAt: 0)
+        let chosen = try XCTUnwrap(preferences.splitFraction)
+
+        // Window frames and the splitter share one preference set, so resizing
+        // any window scales its own panes without being a new user choice: it
+        // must not overwrite the divider the user just moved.
+        let second = try XCTUnwrap(controllers.last?.window)
+        var frame = second.frame
+        frame.size.width -= 200
+        second.setFrame(frame, display: true)
+        RunLoop.current.run(until: Date().addingTimeInterval(0.2))
+
+        XCTAssertEqual(try XCTUnwrap(preferences.splitFraction), chosen, accuracy: 0.001)
+    }
+
+    func testEdgeDividerPositionsSurviveRelaunch() throws {
+        let start = try makeFolder("Start", under: root)
+        let preferences = Preferences.shared
+        let savedFraction = preferences.splitFraction
+        let savedFrame = preferences.windowFrame
+        preferences.splitFraction = nil
+        defer {
+            preferences.splitFraction = savedFraction
+            preferences.windowFrame = savedFrame
+        }
+
+        // Narrowest tree pane the divider allows.
+        let first = makeController(start: start)
+        let firstSplit = try XCTUnwrap(locate(in: first).split)
+        firstSplit.setPosition(0, ofDividerAt: 0)
+        let narrowWidth = try XCTUnwrap(firstSplit.arrangedSubviews.first).frame.width
+        XCTAssertEqual(narrowWidth, ExplorerWindowController.minimumTreeWidth, accuracy: 1)
+
+        let restoredNarrow = makeController(start: start, cascadeIndex: 1)
+        let narrowSplit = try XCTUnwrap(locate(in: restoredNarrow).split)
+        XCTAssertEqual(narrowSplit.arrangedSubviews.first?.frame.width ?? 0, narrowWidth, accuracy: 1,
+                       "A stored width near the minimum must come back exactly, not clamped narrower")
+
+        // Widest tree pane the divider allows.
+        narrowSplit.setPosition(narrowSplit.bounds.width, ofDividerAt: 0)
+        let wideWidth = try XCTUnwrap(narrowSplit.arrangedSubviews.first).frame.width
+        XCTAssertEqual(wideWidth, narrowSplit.bounds.width - ExplorerWindowController.minimumListWidth, accuracy: 1)
+
+        let restoredWide = makeController(start: start, cascadeIndex: 2)
+        let wideSplit = try XCTUnwrap(locate(in: restoredWide).split)
+        XCTAssertEqual(wideSplit.arrangedSubviews.first?.frame.width ?? 0, wideWidth, accuracy: 1,
+                       "A stored width near the maximum must come back exactly, not clamped narrower")
+    }
+
+    func testStoredSplitFractionIsRestored() throws {
+        let start = try makeFolder("Start", under: root)
+        let preferences = Preferences.shared
+        let savedFraction = preferences.splitFraction
+        preferences.splitFraction = 0.25
+        defer { preferences.splitFraction = savedFraction }
+
+        let controller = makeController(start: start)
+        let split = try XCTUnwrap(locate(in: controller).split)
+        let width = split.bounds.width
+        XCTAssertGreaterThan(width, 0)
+        let treeWidth = try XCTUnwrap(split.arrangedSubviews.first).frame.width
+        XCTAssertEqual(Double(treeWidth / width), 0.25, accuracy: 0.02,
+                       "A stored split width should win over the default")
+    }
+
     func testLayoutAndDirectoryListing() throws {
         let start = try makeFolder("Start", under: root)
         _ = try makeFolder("Child", under: start)

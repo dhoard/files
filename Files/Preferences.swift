@@ -40,18 +40,23 @@ final class Preferences {
         set { defaults.set(newValue, forKey: PreferenceKey.sortAscending) }
     }
 
-    /// Fraction of the window width occupied by the directory tree (0.15 - 0.75).
+    /// Fraction of the window width occupied by the directory tree.
+    ///
+    /// Only a sanity bound is enforced here; the smallest and largest usable
+    /// pane widths are point limits owned by the window controller. Clamping
+    /// tighter than the divider can actually reach would move the divider on
+    /// the next launch.
     var splitFraction: Double? {
         get {
             guard let value = defaults.object(forKey: PreferenceKey.splitFraction) as? Double else { return nil }
-            return min(max(value, 0.15), 0.75)
+            return min(max(value, 0.05), 0.95)
         }
         set {
             guard let newValue else {
                 defaults.removeObject(forKey: PreferenceKey.splitFraction)
                 return
             }
-            defaults.set(min(max(newValue, 0.15), 0.75), forKey: PreferenceKey.splitFraction)
+            defaults.set(min(max(newValue, 0.05), 0.95), forKey: PreferenceKey.splitFraction)
         }
     }
 
